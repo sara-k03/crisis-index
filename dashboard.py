@@ -1,9 +1,6 @@
 import streamlit as st
 import dashboard_controller as dc
 
-# Set up page
-dc.set_page("Post-WW2 Conflicts")
-
 # Show filters once
 df = dc.load_UCDP_v25_data()
 
