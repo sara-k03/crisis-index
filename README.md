@@ -9,3 +9,6 @@ The goal of this project is to use machine learning to rank every country on a s
 
 ## Current Functionality
 Created a map where if you hover over the country, the name displays
+
+## Resources 
+TBA
