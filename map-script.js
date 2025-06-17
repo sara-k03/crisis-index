@@ -4,7 +4,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-fetch('world-countries.json')
+fetch('resources/world-countries.json')
   .then(response => response.json())
   .then(geoData => {
     L.geoJSON(geoData, {
