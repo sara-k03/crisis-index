@@ -7,7 +7,7 @@ The goal of this project is to use machine learning to rank every country on a s
 - Economic Instability (inflation, unemployment, etc.)
 - Environmental Disasters (floods, droughts, earthquakes, wildfires, etc.)
 
-Link: https://sara-k03.github.io/global-risk-map/map.html
+Link: https://sara-k03.github.io/crisis-index/map.html
 
 ## Current Functionality
 Created a map where if you hover over the country, the name displays
