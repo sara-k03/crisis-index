@@ -3,9 +3,9 @@
 <head> <!-- Defines page metadata; title is the name shown in the browser tab -->
   <title>World Map</title>
   <meta charset="utf-8" /> <!-- Text supports all characters, including symbols and non-English letters -->
-  <link rel="stylesheet" href="resources/leaflet/leaflet.css" /> <!-- Document header; declares document as an HTML5 document -->
+  <link rel="stylesheet" href="resources/leaflet/leaflet.css" /> <!-- Link to the Leaflet CSS file stored locally in resources/leaflet folder -->
   <style>
-
+    /* Map container style. Sets width to full width of the screen and height to full height of the screen. */
     #map {
       height: 100vh;
       width: 100%;
@@ -17,9 +17,8 @@
   </style>
 </head>
 <body>
-  <div id="map"></div>
-
-  <script src="resources/leaflet/leaflet.js"></script>
-  <script src="map-script.js"></script> <!-- The script can also be written inside these script tags -->
+  <div id="map"></div> <!-- Container or "canvas" where the Leaflet map will be -->
+  <script src="resources/leaflet/leaflet.js"></script> <!-- Includes Leaflet JS library -->
+  <script src="map-script.js"></script> <!-- Main JS code; script can also be written inside these script tags -->
 </body>
 </html>
