@@ -1,0 +1,25 @@
+<!DOCTYPE html> <!-- Document header; declares document as an HTML5 document -->
+<html>
+<head> <!-- Defines page metadata; title is the name shown in the browser tab -->
+  <title>World Map</title>
+  <meta charset="utf-8" /> <!-- Text supports all characters, including symbols and non-English letters -->
+  <link rel="stylesheet" href="leaflet/leaflet.css" /> <!-- Document header; declares document as an HTML5 document -->
+  <style>
+
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+    /* Comment this out to bring the purple box outline back */
+    .leaflet-interactive:focus { 
+      outline: none
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="leaflet/leaflet.js"></script>
+  <script src="map-script.js"></script> <!-- The script can also be written inside these script tags -->
+</body>
+</html>
