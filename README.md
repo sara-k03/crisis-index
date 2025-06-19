@@ -1,7 +1,7 @@
 # Crisis Index
 
 ## Overview
-The goal of this project is to use machine learning to rank every country on a scale from 1-5 (1 = least prone, 5 = most prone) in terms of how at-risk they are in the following categories:
+The goal of this project is to develop a machine learning model that analyses every country in terms of how at-risk they are in the following categories:
 
 - Armed Conflicts (civil wars, interstate wars, etc.)
 - Economic Instability (inflation, unemployment, etc.)
