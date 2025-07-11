@@ -7,58 +7,49 @@ const map = L.map('map').setView([20, 0], 2);
 // Attribution is required to give credit to OpenStreetMap contributors.
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
 
-// First fetch the risk data
-fetch('country-risk-data.json')
-  .then(response => response.json())
-  .then(riskData => {
-    
-    // Then fetch the geoJSON
-    fetch('resources/world-countries.json')
-      .then(response => response.json())
-      .then(geoData => {
+// Fetch the GeoJSON file containing country polygons.
+// Fetch returns a "Promise" which represents the future result of an asynchronous operation 
+fetch('resources/world-countries.json')
+  .then(response => response.json()) // Parse the response as JSON
+  .then(geoData => { // .then denotes a task to be performed after an asynchronous operation
+    // Add the GeoJSON data to the map
+    L.geoJSON(geoData, {
+      // For each country polygon feature, define custom behavior and styling
+      onEachFeature: function (feature, layer) {
+        // Get the country's name from GeoJSON properties
+        const country = feature.properties.name;
         
-        // Pass both datasets to this function
-        L.geoJSON(geoData, {
-          onEachFeature: function (feature, layer) {
-            const country = feature.properties.name;
+        // Bind a tooltip to the country polygon showing the country name.
+        // 'sticky: true' means the tooltip follows the mouse cursor.
+        layer.bindTooltip(country, {sticky: true});
+    
+        // When the user moves the mouse over the country polygon...
+        layer.on('mouseover', function () {
+          // Change the polygon style to highlight it
+          this.setStyle({
+            weight: 3, // border
+            color: '#666', // color
+            fillOpacity: 0.5 // more opaque fill
+          });
+          // Open tool tup
+          this.openTooltip();
+        });
 
-            // Pull risk data for this country
-            const risk = riskData[country] || {
-              armed_conflict_risk: "Data not available",
-              economic_instability_risk: "Data not available",
-              environmental_disaster_risk: "Data not available"
-            };
+        layer.on('mouseout', function () {
+          this.setStyle({
+            weight: 1,
+            color: '#444',
+            fillOpacity: 0.2
+          });
+          this.closeTooltip();
+        });
 
-            // Create popup content with the risks
-            const popupContent = `
-              <strong>${country}</strong><br>
-              Armed Conflict Risk: ${risk.armed_conflict_risk}<br>
-              Economic Instability Risk: ${risk.economic_instability_risk}<br>
-              Environmental Disaster Risk: ${risk.environmental_disaster_risk}
-            `;
-
-            layer.bindTooltip(country, { sticky: true });
-
-            // Highlight on mouseover
-            layer.on('mouseover', function () {
-              this.setStyle({ weight: 3, color: '#666', fillOpacity: 0.5 });
-              this.openTooltip();
-            });
-
-            // Reset on mouseout
-            layer.on('mouseout', function () {
-              this.setStyle({ weight: 1, color: '#444', fillOpacity: 0.2 });
-              this.closeTooltip();
-            });
-
-            // Show the risk data on click
-            layer.on('click', function () {
-              layer.bindPopup(popupContent).openPopup();
-            });
-
-            // Initial style
-            layer.setStyle({ color: '#444', weight: 1, fillOpacity: 0.2 });
-          }
-        }).addTo(map);
-      });
+        // Initial style
+        layer.setStyle({
+          color: '#444',
+          weight: 1,
+          fillOpacity: 0.2
+        });
+      }
+    }).addTo(map);
   });
