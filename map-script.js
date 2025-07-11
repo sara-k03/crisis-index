@@ -8,7 +8,7 @@ const map = L.map('map').setView([20, 0], 2);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
 
 // First fetch the risk data
-fetch('resources/country-risk-data.json')
+fetch('country-risk-data.json')
   .then(response => response.json())
   .then(riskData => {
     
