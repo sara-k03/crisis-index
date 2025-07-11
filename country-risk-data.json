@@ -1,0 +1,17 @@
+{
+  "United States": {
+    "armed_conflict_risk": "Low",
+    "economic_instability_risk": "Medium",
+    "environmental_disaster_risk": "High"
+  },
+  "India": {
+    "armed_conflict_risk": "Medium",
+    "economic_instability_risk": "Medium",
+    "environmental_disaster_risk": "High"
+  },
+  "Ukraine": {
+    "armed_conflict_risk": "High",
+    "economic_instability_risk": "High",
+    "environmental_disaster_risk": "Medium"
+  }
+}
