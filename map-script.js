@@ -44,6 +44,10 @@ fetch('resources/world-countries.json')
           this.closeTooltip();
         });
 
+        layer.on('click', function () {
+          loadCountryAnalysis(country);
+        });
+
         // Initial style
         layer.setStyle({
           color: '#444',
@@ -53,3 +57,36 @@ fetch('resources/world-countries.json')
       }
     }).addTo(map);
   });
+
+
+function loadCountryAnalysis(countryName) {
+  const panel = document.getElementById('info-panel');
+
+  // Placeholder logic; replace with real data source in Phase 2
+  const mockData = {
+    "India": {
+      conflicts: ["Manipur unrest", "Kashmir tensions"],
+      riskIndex: 7.5,
+      humanitarian: "High risk of displacement in NE regions"
+    },
+    "Sudan": {
+      conflicts: ["Darfur conflict", "Khartoum struggle"],
+      riskIndex: 9.1,
+      humanitarian: "Widespread famine and conflict"
+    }
+  };
+
+  const data = mockData[countryName];
+
+  if (!data) {
+    panel.innerHTML = `<h3>${countryName}</h3><p>No data available yet.</p>`;
+    return;
+  }
+
+  panel.innerHTML = `
+    <h3>${countryName}</h3>
+    <p><strong>Conflicts:</strong> ${data.conflicts.join(", ")}</p>
+    <p><strong>Risk Index:</strong> ${data.riskIndex}/10</p>
+    <p><strong>Humanitarian Situation:</strong> ${data.humanitarian}</p>
+  `;
+}
