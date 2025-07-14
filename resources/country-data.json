@@ -1,0 +1,18 @@
+{
+  "India": {
+    "conflicts": ["Manipur unrest", "Kashmir tensions"],
+    "riskIndex": 7.5,
+    "humanitarian": "High risk of displacement in NE regions",
+    "sources": [
+      "https://example.com/india-crisis"
+    ]
+  },
+  "Sudan": {
+    "conflicts": ["Darfur conflict", "Khartoum struggle"],
+    "riskIndex": 9.1,
+    "humanitarian": "Widespread famine and conflict",
+    "sources": [
+      "https://reliefweb.int/report/sudan-crisis-2025"
+    ]
+  }
+}
