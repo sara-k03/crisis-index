@@ -1,11 +1,21 @@
 // Initialize the Leaflet map inside the HTML element with id 'map'.
-// Set the initial view to latitude 20, longitude 0, and zoom level 2 (world view).
-const map = L.map('map').setView([20, 0], 2);
+const map = L.map('map', {
+  worldCopyJump: false,      // Prevents jumping when crossing the date line
+  maxBoundsViscosity: 1.0,   // Prevents dragging outside bounds
+  maxBounds: [               // Prevents map from panning beyond world extent
+    [-90, -180],
+    [90, 180]
+  ]
+}).setView([20, 0], 2);
 
 // Add OpenStreetMap tile layer as the base map tiles.
 // Tiles are loaded from the OpenStreetMap tile server.
 // Attribution is required to give credit to OpenStreetMap contributors.
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors',
+  minZoom: 2,
+  maxZoom: 18
+}).addTo(map);
 
 // Fetch the GeoJSON file containing country polygons.
 // Fetch returns a "Promise" which represents the future result of an asynchronous operation 
