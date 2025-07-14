@@ -1,11 +1,7 @@
 # Crisis Index
 
 ## Overview
-The goal of this project is to develop a machine learning model that analyses every country in terms of how at-risk they are in the following categories:
-
-- Armed Conflicts (civil wars, interstate wars, etc.)
-- Economic Instability (inflation, unemployment, etc.)
-- Environmental Disasters (floods, droughts, earthquakes, wildfires, etc.)
+TBA
 
 Link: https://sara-k03.github.io/crisis-index/map.html
 
