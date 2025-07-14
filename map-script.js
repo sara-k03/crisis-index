@@ -1,12 +1,11 @@
 // Initialize the Leaflet map inside the HTML element with id 'map'.
 const map = L.map('map', {
-  worldCopyJump: false,      // Prevents jumping when crossing the date line
-  maxBoundsViscosity: 1.0,   // Prevents dragging outside bounds
-  maxBounds: [               // Prevents map from panning beyond world extent
-    [-90, -180],
-    [90, 180]
-  ]
-}).setView([20, 0], 2);
+  center: [20, 0],
+  zoom: 2,
+  maxBounds: [[-90, -180], [90, 180]], // restrict panning
+  maxBoundsViscosity: 1.0,
+  worldCopyJump: false
+});
 
 // Add OpenStreetMap tile layer as the base map tiles.
 // Tiles are loaded from the OpenStreetMap tile server.
@@ -14,7 +13,8 @@ const map = L.map('map', {
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors',
   minZoom: 2,
-  maxZoom: 18
+  maxZoom: 5,
+  noWrap: true // stops world from repeating horizontally 
 }).addTo(map);
 
 // Fetch the GeoJSON file containing country polygons.
