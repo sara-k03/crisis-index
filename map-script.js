@@ -59,33 +59,3 @@ fetch('resources/world-countries.json')
       }
     }).addTo(map);
   });
-
-
-// function loadCountryAnalysis(countryName) {
-//   console.log("Clicked country:", countryName);
-
-//   const panel = document.getElementById('info-panel');
-
-//   fetch('resources/country-data.json')
-//     .then(response => response.json())
-//     .then(data => {
-//       const countryData = data[countryName];
-
-//       if (!countryData) {
-//         panel.innerHTML = `<h3>${countryName}</h3><p>No data available.</p>`;
-//         return;
-//       }
-
-//       panel.innerHTML = `
-//         <h3>${countryName}</h3>
-//         <p><strong>Conflicts:</strong> ${countryData.conflicts.join(", ")}</p>
-//         <p><strong>Risk Index:</strong> ${countryData.riskIndex}/10</p>
-//         <p><strong>Humanitarian:</strong> ${countryData.humanitarian}</p>
-//         <p><strong>Sources:</strong><br>${countryData.sources.map(link => `<a href="${link}" target="_blank">${link}</a>`).join("<br>")}</p>
-//       `;
-//     })
-//     .catch(error => {
-//       console.error("Error loading country data:", error);
-//       panel.innerHTML = `<h3>${countryName}</h3><p>Error loading data.</p>`;
-//     });
-// }
